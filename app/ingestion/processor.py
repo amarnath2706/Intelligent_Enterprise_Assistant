@@ -23,6 +23,7 @@ PROCESSED_DATA_DIR = "processed_data"
 qdrant_client = QdrantClient(
     url=settings.QDRANT_URL,
     api_key=settings.QDRANT_API_KEY,
+    port=6333
 )
 
 
@@ -171,7 +172,6 @@ if __name__ == "__main__":
     #   python -m app.ingestion.processor DATA/true_data true
     wipe_requested = "--wipe" in sys.argv
     clean_args = [a for a in sys.argv if a != "--wipe"]
-
     target_dir = clean_args[1] if len(clean_args) > 1 else "DATA"
     explicit_type = clean_args[2] if len(clean_args) > 2 else None
 

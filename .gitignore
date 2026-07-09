@@ -1,2 +1,4 @@
 /DATA
 .env
+__pycache__
+processed_data

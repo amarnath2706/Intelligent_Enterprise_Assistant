@@ -9,8 +9,8 @@ BATCH_SIZE = 50
 _GEMINI_DIM = 3072
 _FALLBACK_DIM = 768 #Fallback model for embeddings - "all-mpnet-base-v2"
 
-_activ_model = None
-_model_type: str | None = None
+_active_model = None
+_model_type: str | None = None  # "gemini" or "fallback"
 
 def _probe_gemini():
     """"Try a embed call to verify whether the Gemini is reachable.Returns model or None. It is a kind of health call to check if the Gemini API is reachable and working."""
