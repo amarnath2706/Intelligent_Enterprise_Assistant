@@ -28,10 +28,10 @@ app = FastAPI(title="Enterprise Agentic RAG API")
 
 class QueryRequest(BaseModel):
     q: str
-    thread_id: Optional[str] = "default_user" #thread - 
+    thread_id: Optional[str] = "default_user" #thread - session ID for memory
     
     
-@app.get("/")
+@app.get("/") 
 def home():
     return {"message": "Enterprise LangGraph RAG API is live."}
 
@@ -63,22 +63,22 @@ def query(request: QueryRequest):
         "plan": ["Start"],
         "status": "Initializing Graph..."
     }
-    
+        
     # Configuration for Memory (Thread ID)
     config = {"configurable": {"thread_id": thread_id}}
     
     try:
         # Gate 1: NeMo Guardrails — blocks off-topic, jailbreaks, and handles dialog
-        rail_fired, rail_response = guard(q)
-        if rail_fired:
-            logfire.info(f"🛡️ Request blocked by guardrails | thread={thread_id}")
-            return {
-                "question": q,
-                "answer": rail_response,
-                "thought_process": ["Intent: Guardrails Fired", "Retrieval: Skipped"],
-                "status": "Blocked by guardrails.",
-                "sources": []
-            }
+        # rail_fired, rail_response = guard(q)
+        # if rail_fired:
+        #     logfire.info(f"🛡️ Request blocked by guardrails | thread={thread_id}")
+        #     return {
+        #         "question": q,
+        #         "answer": rail_response,
+        #         "thought_process": ["Intent: Guardrails Fired", "Retrieval: Skipped"],
+        #         "status": "Blocked by guardrails.",
+        #         "sources": []
+        #     } 
 
         # Gate 2: LangGraph RAG pipeline
         # Run the graph synchronously to preserve Logfire context variables
