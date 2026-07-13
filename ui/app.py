@@ -61,7 +61,7 @@ with st.sidebar:
         st.rerun()
 
 # --- MAIN CHAT ---
-st.title("🤖 Enterprise Agentic Assistant")
+st.title("🤖 Intelligent Enterprise Assistant")
 
 
 # Display history
