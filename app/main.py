@@ -12,7 +12,7 @@ logfire.configure(token=os.getenv("LOGFIRE_TOKEN"))
 # Now safe to import app modules - logfire is already active
 from fastapi import FastAPI, Response
 from app.agents.graph import rag_agent
-from app.guardrails import initialize_rails, guard
+from app.guardrails import initialize_rails, guard   
 
 from pydantic import BaseModel
 from typing import Optional
@@ -22,10 +22,11 @@ from typing import Optional
 app = FastAPI(title="Enterprise Agentic RAG API")
 
 
+#@app.on_event("startup")
 @app.on_event("startup")
 def startup_event():
     initialize_rails()
-
+    
 class QueryRequest(BaseModel):
     q: str
     thread_id: Optional[str] = "default_user" #thread - session ID for memory
