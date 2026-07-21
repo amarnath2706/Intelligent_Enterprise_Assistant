@@ -12,8 +12,8 @@ class Settings:
    QDRANT_COLLECTION = "enterprise_assistant_collection" #name of the collection in qdrant database
    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
    GROQ_MODEL = "llama-3.3-70b-versatile"
-   GROQ_SLUG="gqgateway"
-   GROQ_SLUG_2="gqgateway1"
+   GROQ_SLUG = "gqgateway"
+   GROQ_SLUG_2 = "gqgateway1"
    PORTKEY_API_KEY = os.getenv("PORTKEY_API_KEY")  # Set Portkey API key in environment
    #GROQ_FALLBACK_API_KEY = os.getenv("GROQ_FALLBACK_API_KEY")  # Optional fallback API
 
