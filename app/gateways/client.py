@@ -28,7 +28,7 @@ portkey_client = Portkey(
 )
 
 
-def get_langchain_llm(feature: str = "rag") -> ChatOpenAI:
+def get_langchain_llm(feature: str = "gqgateway") -> ChatOpenAI:
     """
     Returns a Portkey-backed ChatOpenAI — a drop-in for ChatGroq in LangChain nodes.
 
@@ -36,7 +36,7 @@ def get_langchain_llm(feature: str = "rag") -> ChatOpenAI:
       Portkey is a proxy. It exposes an OpenAI-compatible endpoint at PORTKEY_GATEWAY_URL.
       ChatGroq is hardwired to Groq's API and does not support routing through a proxy.
       ChatOpenAI supports base_url (points at Portkey) and default_headers (passes Portkey
-      auth + config). The @rag/model-name format is Portkey-specific — Groq's own client
+      auth + config). The @gqgateway/model-name format is Portkey-specific — Groq's own client
       does not understand it. You are still using Groq models; Portkey is just in the middle.
     """
     return ChatOpenAI(
