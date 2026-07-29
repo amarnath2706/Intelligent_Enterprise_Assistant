@@ -17,7 +17,8 @@ from openai import AsyncOpenAI
 from ragas.llms import llm_factory
 from ragas.embeddings import HuggingFaceEmbeddings
 from ragas import SingleTurnSample
-from ragas.metrics.collections import (
+#from ragas.metrics.collections import 
+from ragas.metrics import(
     Faithfulness,
     AnswerRelevancy,
     ContextPrecision,
